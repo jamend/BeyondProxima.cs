@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Api.Models
 {
@@ -16,7 +17,9 @@ namespace Api.Models
         public string Email { get; set; }
         public DateTime Created { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<StarSystem> StarSystems { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Fleet> Fleets { get; set; }
     }
 }

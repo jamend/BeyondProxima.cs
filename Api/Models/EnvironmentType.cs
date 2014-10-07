@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Api.Models
 {
@@ -10,6 +11,7 @@ namespace Api.Models
 
         public string Name { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<StarSystem> StarSystems { get; set; }
     }
 }

@@ -11,7 +11,8 @@
         }
     ])
     .controller('indexCtrl', [
-        '$scope', function($scope) {
+        '$rootScope', '$scope', function ($rootScope, $scope) {
+            $rootScope.title = 'Home';
             $scope.test = 'hi';
         }
     ]);

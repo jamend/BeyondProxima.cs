@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Api.Models
 {
@@ -18,13 +19,13 @@ namespace Api.Models
         public float TotalSteps { get; set; }
         public float CurrentStep { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("UserId"), JsonIgnore]
         public User User { get; set; }
 
-        [ForeignKey("StarSystemId")]
+        [ForeignKey("StarSystemId"), JsonIgnore]
         public StarSystem StarSystem { get; set; }
 
-        [ForeignKey("DestinationStarSystemId")]
+        [ForeignKey("DestinationStarSystemId"), JsonIgnore]
         public StarSystem DestinationStarSystem { get; set; }
     }
 }

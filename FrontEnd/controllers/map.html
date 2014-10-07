@@ -1,1 +1,6 @@
-﻿(map)
+﻿<div id="map">
+    <div class="starSystem starType_1"
+         ng-repeat="starSystem in starSystems"
+         ng-style="{left: tileSize * starSystem.x + 'px', top: tileSize * starSystem.y + 'px'}"
+         title="{{starSystem.name}}"></div>
+</div>

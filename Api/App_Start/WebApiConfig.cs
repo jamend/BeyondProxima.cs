@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using Newtonsoft.Json.Serialization;
 
 namespace Api
 {
@@ -9,11 +11,6 @@ namespace Api
         {
             // Web API configuration and services
 
-            using (var db = new BeyondProximaContext())
-            {
-                db.Planets.Count();
-            }
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -22,6 +19,13 @@ namespace Api
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional }
             );
+
+            // set up JSON output
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            // CORS
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }

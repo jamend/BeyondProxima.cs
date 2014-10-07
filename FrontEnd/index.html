@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="beyondProxima" ng-controller="appCtrl">
 <head>
-    <title ng-bind="title + ' | Beyond Proxima'">Beyond Proxima</title>
+    <title ng-bind="$root.title + ' | Beyond Proxima'">Beyond Proxima</title>
     <base href="/" />
     <script type="text/javascript" src="lib/angular/angular.js"></script>
     <script type="text/javascript" src="lib/angular/angular-route.js"></script>
     <script type="text/javascript" src="lib/angular/angular-resource.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="services/api.js"></script>
     <script type="text/javascript" src="controllers/index.js"></script>
     <script type="text/javascript" src="controllers/map.js"></script>
     <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <link rel="stylesheet" href="css/map.css" type="text/css" />
 </head>
 <body>
     <div ng-view></div>

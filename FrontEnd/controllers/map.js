@@ -11,6 +11,9 @@
         }
     ])
     .controller('mapCtrl', [
-        '$scope', function($scope) {
+        '$rootScope', '$scope', 'api', function ($rootScope, $scope, api) {
+            $rootScope.title = 'Map';
+            $scope.tileSize = 64;
+            $scope.starSystems = api.StarSystems.query();
         }
     ]);

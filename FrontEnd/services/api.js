@@ -1,0 +1,9 @@
+﻿angular
+    .module('beyondProxima')
+    .factory('api', [
+        '$resource', 'apiUrl', function ($resource, apiUrl) {
+            return {
+                StarSystems: $resource(apiUrl + '/starSystems/:id', { id: '@id' }),
+            };
+        }
+    ]);

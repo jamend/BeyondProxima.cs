@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Api.Models
 {
@@ -14,9 +15,10 @@ namespace Api.Models
         public float X { get; set; }
         public float Y { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("UserId"), JsonIgnore]
         public User User { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Planet> Planets { get; set; }
     }
 }
