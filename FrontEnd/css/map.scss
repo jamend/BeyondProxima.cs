@@ -12,9 +12,12 @@
     background-attachment: local;
     overflow: auto;
 
-    .fleet {
+    [fleet] {
         z-index: 3;
         position: absolute;
+        width: $tileWidth / 2;
+        height: $tileWidth / 2;
+        background-image: url('/images/map/fleet.png');
     }
         
     .starSystem {

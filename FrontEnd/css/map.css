@@ -9,9 +9,12 @@
   background-repeat: repeat;
   background-attachment: local;
   overflow: auto; }
-  #map .fleet {
+  #map [fleet] {
     z-index: 3;
-    position: absolute; }
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-image: url('/images/map/fleet.png'); }
   #map .starSystem {
     z-index: 2;
     position: absolute;

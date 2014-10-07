@@ -10,14 +10,14 @@ namespace Api.Models
         public int Id { get; set; }
 
         public int UserId { get; set; }
-        public int StarSystemId { get; set; }
-        public int DestinationStarSystemId { get; set; }
+        public int? StarSystemId { get; set; }
+        public int? DestinationStarSystemId { get; set; }
         public float X { get; set; }
         public float Y { get; set; }
-        public float DestinationX { get; set; }
-        public float DestinationY { get; set; }
-        public float TotalSteps { get; set; }
-        public float CurrentStep { get; set; }
+        public float? DestinationX { get; set; }
+        public float? DestinationY { get; set; }
+        public float? TotalSteps { get; set; }
+        public float? CurrentStep { get; set; }
 
         [ForeignKey("UserId"), JsonIgnore]
         public User User { get; set; }

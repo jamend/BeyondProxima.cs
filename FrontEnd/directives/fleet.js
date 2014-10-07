@@ -25,7 +25,7 @@
 
     this.change = function (x2, y2, colour) {
         ctx.clearRect(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight);
-        ctx.strokeStyle = colour;
+        if (typeof colour !== 'undefined') ctx.strokeStyle = colour;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
@@ -39,25 +39,21 @@
 
 angular
     .module('beyondProxima')
-    .config([
-        '$routeProvider',
-        function($routeProvider) {
-            $routeProvider
-                .when('/map', {
-                    templateUrl: 'controllers/map.html',
-                    controller: 'mapCtrl'
-                });
+    .directive('fleet', [function() {
+        return {
+            restrict: 'A',
+            replace: true,
+            template: '<div ng-style="{left: tileSize * fleet.x + \'px\', top: tileSize * fleet.y + \'px\'}" ng-click="chooseFleetCourse(fleet)"></div>',
+            link: function ($scope, element) {
+                $scope.chooseFleetCourse = function (fleet) {
+                    var x = fleet.x * $scope.tileSize;
+                    var y = fleet.y * $scope.tileSize;
+                    console.log(x);
+                    var line = new Line(element[0].parentNode, x, y, x, y, '#00ff00');
+                    element.parent().bind('mousemove', function(e) {
+                        line.change(e.clientX, e.clientY);
+                    });
+                };
+            }
         }
-    ])
-    .controller('mapCtrl', [
-        '$rootScope', '$scope', 'api', function ($rootScope, $scope, api) {
-            $rootScope.title = 'Map';
-            $scope.tileSize = 64;
-            $scope.starSystems = api.StarSystems.query();
-            $scope.fleets = api.Fleets.query();
-
-            $scope.chooseFleetCourse = function (fleet) {
-                
-        };
-    }
-    ]);
+    }]);
