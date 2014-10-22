@@ -14,8 +14,8 @@ namespace Api.Models
         public int? DestinationStarSystemId { get; set; }
         public float X { get; set; }
         public float Y { get; set; }
-        public float? DestinationX { get; set; }
-        public float? DestinationY { get; set; }
+        public float? NextX { get; set; }
+        public float? NextY { get; set; }
         public float? TotalSteps { get; set; }
         public float? CurrentStep { get; set; }
 

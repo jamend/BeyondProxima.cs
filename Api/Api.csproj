@@ -97,10 +97,16 @@
     <Compile Include="BeyondProximaContext.cs" />
     <Compile Include="Controllers\FleetsController.cs" />
     <Compile Include="Controllers\PlanetsController.cs" />
+    <Compile Include="Controllers\FleetCourseController.cs" />
     <Compile Include="Controllers\StarSystemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410220303333_Update1.cs" />
+    <Compile Include="Migrations\201410220303333_Update1.Designer.cs">
+      <DependentUpon>201410220303333_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Fleet.cs" />
     <Compile Include="Models\Planet.cs" />
     <Compile Include="Models\StarSystem.cs" />
@@ -119,6 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201410220303333_Update1.resx">
+      <DependentUpon>201410220303333_Update1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

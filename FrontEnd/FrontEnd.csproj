@@ -80,6 +80,7 @@
     <Content Include="css\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <Content Include="directives\starSystem.js" />
     <Content Include="directives\fleet.js" />
     <Content Include="lib\angular\angular-animate.min.js.map" />
     <Content Include="lib\angular\angular-aria.min.js.map" />
@@ -2487,6 +2488,9 @@
     <Content Include="lib\angular\i18n\angular-locale_zu.js" />
     <Content Include="lib\angular\version.txt" />
     <Content Include="services\api.js" />
+    <Content Include="services\course.js" />
+    <Content Include="services\line.js" />
+    <Content Include="services\config.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

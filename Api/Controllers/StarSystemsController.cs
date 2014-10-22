@@ -12,5 +12,13 @@ namespace Api.Controllers
                 return db.StarSystems.ToArray();
             }
         }
+
+        public object Get(int id)
+        {
+            using (var db = new BeyondProximaContext())
+            {
+                return (object)db.StarSystems.Find(id) ?? NotFound();
+            }
+        }
     }
 }
