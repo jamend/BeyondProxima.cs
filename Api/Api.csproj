@@ -102,9 +102,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410220303333_Update1.cs" />
-    <Compile Include="Migrations\201410220303333_Update1.Designer.cs">
-      <DependentUpon>201410220303333_Update1.cs</DependentUpon>
+    <Compile Include="Migrations\201410230252058_Update1.cs" />
+    <Compile Include="Migrations\201410230252058_Update1.Designer.cs">
+      <DependentUpon>201410230252058_Update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Fleet.cs" />
@@ -127,8 +127,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410220303333_Update1.resx">
-      <DependentUpon>201410220303333_Update1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410230252058_Update1.resx">
+      <DependentUpon>201410230252058_Update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
