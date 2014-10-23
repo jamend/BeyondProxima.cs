@@ -1,6 +1,6 @@
 ﻿angular
     .module('beyondProxima')
-    .directive('starSystem', ['config', 'api', 'course', function (config, api, course) {
+    .directive('starSystem', ['config', 'api', 'courseChange', function (config, api, courseChange) {
         return {
             restrict: 'A',
             replace: true,
@@ -9,9 +9,7 @@
                 $scope.tileSize = config.tileSize;
 
                 element.bind('click', function() {
-                    if (course.courseChangeActive) {
-                        course.setCourse($scope.starSystem, element);
-                    }
+                    courseChange.setCourse($scope.starSystem);
                 });
             }
         }

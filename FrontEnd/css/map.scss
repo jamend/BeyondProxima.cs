@@ -31,4 +31,14 @@
             background-image: url('/images/stars/s1.png');
         }
     }
+
+    .tick {
+        position: fixed;
+        z-index: 4;
+        bottom: 30px;
+        left: 10px;
+        padding: 10px;
+        background-color: red;
+        color: white;
+    }
 }

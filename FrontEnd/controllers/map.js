@@ -14,6 +14,17 @@
         '$rootScope', '$scope', 'config', 'api', function ($rootScope, $scope, config, api) {
             $rootScope.title = 'Map';
             $scope.starSystems = api.StarSystems.query();
-            $scope.fleets = api.Fleets.query();
+
+            function getFleets() {
+                $scope.fleets = api.Fleets.query();
+            }
+
+            $scope.tick = function() {
+                api.Tick.save(function() {
+                    getFleets();
+                });
+            };
+
+            getFleets();
         }
     ]);

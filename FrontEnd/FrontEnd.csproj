@@ -2488,7 +2488,7 @@
     <Content Include="lib\angular\i18n\angular-locale_zu.js" />
     <Content Include="lib\angular\version.txt" />
     <Content Include="services\api.js" />
-    <Content Include="services\course.js" />
+    <Content Include="services\courseChange.js" />
     <Content Include="services\line.js" />
     <Content Include="services\config.js" />
     <Content Include="Web.config">

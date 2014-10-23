@@ -25,7 +25,7 @@
                 ctx.stroke();
             };
 
-            this.destroy = function() {
+            this.destroy = function () {
                 container.removeChild(canvas);
             };
         };
