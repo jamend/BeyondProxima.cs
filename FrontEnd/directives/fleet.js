@@ -4,22 +4,36 @@
         return {
             restrict: 'A',
             replace: true,
-            template: '<div ng-style="{left: tileSize * fleet.x + \'px\', top: tileSize * fleet.y + \'px\'}" ng-click="chooseFleetCourse()"></div>',
+            template: '<div ng-style="{left: x + \'px\', top: y + \'px\'}" ng-click="chooseFleetCourse()"></div>',
             link: function ($scope, element) {
-                $scope.tileSize = config.tileSize;
-
-                var x = $scope.fleet.x * config.tileSize + config.fleetSize / 2;
-                var y = $scope.fleet.y * config.tileSize + config.fleetSize / 2;
                 var courseLine;
 
                 function showCourse(destination) {
+                    $scope.x = $scope.fleet.x * config.tileSize;
+                    $scope.y = $scope.fleet.y * config.tileSize;
+
                     var destinationX = destination.x * config.tileSize + config.tileSize / 2;
                     var destinationY = destination.y * config.tileSize + config.tileSize / 2;
-                    if (courseLine) courseLine.destroy();
-                    courseLine = new line(element[0].parentNode, x, y, destinationX, destinationY, '#0000ff');
+                    removeLine();
+                    courseLine = new line(element[0].parentNode, $scope.x + config.fleetSize / 2, $scope.y + config.fleetSize / 2, destinationX, destinationY, '#0000ff');
                 };
 
-                if ($scope.fleet.destinationStarSystemId != null) {
+                function idleFleet() {
+                    $scope.x = $scope.fleet.x * config.tileSize + config.tileSize / 2;
+                    $scope.y = $scope.fleet.y * config.tileSize;
+                    removeLine();
+                };
+
+                function removeLine() {
+                    if (courseLine) {
+                        courseLine.destroy();
+                        courseLine = null;
+                    }
+                }
+
+                if ($scope.fleet.destinationStarSystemId == null) {
+                    idleFleet();
+                } else {
                     api.StarSystems.get({ id: $scope.fleet.destinationStarSystemId }, function (destination) {
                         showCourse(destination);
                     });
@@ -29,9 +43,12 @@
                     courseLine.change(e.clientX, e.clientY, '#00ff00');
                 }
 
-                $scope.chooseFleetCourse = function() {
+                $scope.chooseFleetCourse = function () {
+                    $scope.x = $scope.fleet.x * config.tileSize;
+                    $scope.y = $scope.fleet.y * config.tileSize;
+
                     if (!courseLine) {
-                        courseLine = new line(element[0].parentNode, x, y, x, y, '#00ff00');
+                        courseLine = new line(element[0].parentNode, $scope.x + config.fleetSize / 2, $scope.y + config.fleetSize / 2, $scope.x, $scope.y, '#00ff00');
                     }
 
                     element.parent().bind('mousemove', mouseMove);
@@ -44,17 +61,23 @@
                                 destination: destination.id
                             });
 
-                            showCourse(destination);
+                            if ($scope.fleet.starSystemId == destination.id) {
+                                // cancel course
+                                $scope.fleet.destinationStarSystemId = null;
+                                idleFleet();
+                            } else {
+                                $scope.fleet.destinationStarSystemId = destination.id;
+                                showCourse(destination);
+                            }
 
                             element.parent().unbind('mousemove', mouseMove);
                         });
                 };
 
+                
+
                 $scope.$destroy = function () {
-                    if (courseLine) {
-                        courseLine.destroy();
-                        courseLine = null;
-                    }
+                    removeLine();
                 };
             }
         }

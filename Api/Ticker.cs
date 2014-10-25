@@ -49,7 +49,7 @@ SET
     Fleets.X = StarSystems.X,
     Fleets.Y = StarSystems.Y,
     TotalSteps = null,
-    CurrentStep = 0,
+    CurrentStep = null,
     StarSystemId = DestinationStarSystemId,
     DestinationStarSystemId = null
 FROM
